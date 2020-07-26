@@ -5,8 +5,8 @@ A local Wordpress instance using docker-compose.
 The project contains a `docker-compose` which configures a local Wordpress instanace with MySQL. 
 It also has persistence unit so your changes won't get lost after stopping the containers.
 
-MySQL accessible via `localhost:3306` with `root` and `secret` credentials.
-Wordpress accessible via `localhost`.
+- MySQL accessible via `localhost:3306` with `root` and `secret` credentials
+- Wordpress accessible via `localhost`
 
 ## Start and stop
 
