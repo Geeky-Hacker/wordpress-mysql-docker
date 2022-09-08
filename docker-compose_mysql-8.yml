@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:8.0.30
+    container_name: db
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=wordpress
+    volumes:
+      - dbdata:/var/lib/mysql
+    command: "--default-authentication-plugin=mysql_native_password"
+  wordpress:
+    depends_on: 
+      - db
+    hostname: wordpress
+    image: wordpress
+    container_name: wordpress
+    ports:
+      - "80:80"
+    environment:
+      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=secret
+      - WORDPRESS_DB_NAME=wordpress
+    volumes:
+      - wordpress:/var/www/html
+volumes:
+  wordpress:
+  dbdata:
+      
